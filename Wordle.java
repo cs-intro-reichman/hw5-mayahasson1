@@ -2,20 +2,19 @@ public class Wordle {
 
     // Reads all words from dictionary filename into a String array.
     public static String[] readDictionary(String filename) {
-	    In in=new In(filename);
-        int count=0;
-        while(!in.isEmpty())
+    In in = new In(filename);
+    java.util.ArrayList<String>list=new java.util.ArrayList<>();
+    while (!in.isEmpty()) 
         {
-            in.readString();
-            count++;
+        list.add(in.readString().toUpperCase());
         }
-        in=new In(filename);
-        String[] dict= new String[count];
-        for(int i=0;i<count;i++)
+
+    String[] dict=new String[list.size()];
+    for (int i = 0;i<list.size(); i++) 
         {
-            dict[i]=in.readString().toUpperCase();
+        dict[i]=list.get(i);
         }
-        return dict;
+    return dict;
     }
 
     // Choose a random secret word from the dictionary. 
@@ -87,7 +86,6 @@ public class Wordle {
             }
             System.out.println();
         }
-        System.out.println();
     }
 
     // Returns true if all entries in resultRow are 'G'.
